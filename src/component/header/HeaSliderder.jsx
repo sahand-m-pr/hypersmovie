@@ -1,5 +1,6 @@
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import MoviesCard from "../movies/MoviesCard";
 
 const images = [
   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
@@ -40,11 +41,14 @@ export default function HeaderSlider({ setBg }) {
       >
         {images.map((image) => (
           <SwiperSlide key={image}>
-            <img
+            <div    onMouseOver={(e) => setBg(image)}>
+              <MoviesCard img={image}/>
+            </div>
+            {/* <img
               onMouseOver={(e) => setBg(image)}
               className="w-full h-96 rounded"
               src={image}
-            />
+            /> */}
           </SwiperSlide>
         ))}
       </Swiper>
