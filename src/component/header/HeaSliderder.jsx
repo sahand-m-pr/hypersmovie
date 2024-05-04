@@ -12,12 +12,28 @@ const images = [
   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
 ];
 
-export default function HeaderSlider({setBg}) {
+export default function HeaderSlider({ setBg }) {
   return (
     <div className="container  max-w-5xl  mt-8">
       <Swiper
-        spaceBetween={20}
-        slidesPerView={4}
+      breakpoints={{
+        // when window width is >= 320px
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        // when window width is >= 480px
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        },
+        // when window width is >= 640px
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 40
+        }}}
+        spaceBetween={0}
+        slidesPerView={1}
         modules={[Autoplay]}
         autoplay={{ delay: 2000 }}
         loop
@@ -25,8 +41,8 @@ export default function HeaderSlider({setBg}) {
         {images.map((image) => (
           <SwiperSlide key={image}>
             <img
-            onMouseOver={(e)=> setBg((image))}
-              className="w-full h-96"
+              onMouseOver={(e) => setBg(image)}
+              className="w-full h-96 rounded"
               src={image}
             />
           </SwiperSlide>
