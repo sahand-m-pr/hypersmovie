@@ -10,7 +10,7 @@ export default function Header() {
     <header
       className="md:py-12 py-6 transition bg-cover bg-no-repeat bg-center"
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgb(0 0 0 /80%),rgb(0 0 0/40%),rgb(0 0 0/70%),black),url(${bg})`,
+        backgroundImage: `linear-gradient(to bottom, rgb(0 0 0 /100%),rgb(0 0 0/60%),rgb(0 0 0/30%),black),url(${bg})`,
       }}
     >
       <Navigation />
