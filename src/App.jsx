@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./component/footer/Footer";
 import Header from "./component/header/Header";
 import MoviesCard from "./component/movies/MoviesCard";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 function App() {
@@ -12,8 +13,8 @@ function App() {
           <Outlet />
         </main>
         <Footer/>
-      
-    </div>
+        <Toaster />
+    </div> 
   );
 }
 

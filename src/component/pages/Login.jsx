@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/User";
 
 export default function Login() {
-  const { login } = useContext(UserContext);
+  const { login , session } = useContext(UserContext);
   function handleLogin(e) {
     e.preventDefault();
 

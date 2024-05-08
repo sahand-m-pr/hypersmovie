@@ -10,7 +10,7 @@ export default function HeaderSlider({ setBg }) {
   const [movie, setMovie] = useState([]);
   async function LoadMovies() {
     const { data } = await axios.get(
-      "https://api.themoviedb.org/3/movie/popular?api_key=baffeb149b3599637d452cf8ddfc6fcb"
+      "https://api.themoviedb.org/3/movie/popular?api_key=da3cf9f38e32359f25ed2d097c96accf"
     );
     setMovie(data.results);
   }
