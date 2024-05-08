@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import MoviesCard from "../movies/MoviesCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import cinema from "../../assets/image/cinema.jpg";
 
 
 export default function HeaderSlider({ setBg }) {
@@ -45,11 +45,11 @@ export default function HeaderSlider({ setBg }) {
       >
         {movie.map((movie) => (
           <SwiperSlide key={movie.id}>
-            <div onMouseOver={(e) => setBg(`http://image.tmdb.org/t/p/w780/${movie.backdrop_path}`)}>
+            <div onMouseLeave={(e)=> setBg(cinema)} onMouseOver={(e) => setBg(`http://image.tmdb.org/t/p/w780/${movie.backdrop_path}`)}>
          
-            <MoviesCard img={`http://image.tmdb.org/t/p/w780/${movie.poster_path}`}
-            title={movie.title}
-            rate={movie.vote_average}/>
+            <MoviesCard 
+            movie={movie}
+            />
             </div>
             {/* <img
               onMouseOver={(e) => setBg(image)}

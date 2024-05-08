@@ -6,15 +6,14 @@ import MoviesCard from "./component/movies/MoviesCard";
 
 function App() {
   return (
-    <>
-   <Header />
-  <main>
-    <Outlet />
-  </main>
-   <Footer/>
-  
+    <div className=" min-h-[100vh]">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer/>
       
-    </>
+    </div>
   );
 }
 

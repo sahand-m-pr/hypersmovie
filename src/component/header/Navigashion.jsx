@@ -1,26 +1,30 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-const menuItems =[
+import { UserContext } from "../../context/User";
+const menuItems = [
   {
-    path : '/movies',
-    text : 'Movies'
+    path: "/movies",
+    text: "Movies",
   },
   {
-    path : '/tv',
-    text : 'Tv Shows'
+    path: "/tv",
+    text: "Tv Shows",
   },
   {
-    path : '/people',
-    text : 'People'
+    path: "/people",
+    text: "People",
   },
   {
-    path : '/more',
-    text : 'More'
+    path: "/more",
+    text: "More",
   },
-
-]
+];
 
 export default function Navigation() {
+  const  { user}  = useContext(UserContext);
+  function activeClass({ isActive }) {
+    return isActive ? "text-yellow-400" : "hover:text-white";
+  }
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   return (
     <>
@@ -33,35 +37,40 @@ export default function Navigation() {
             </h1>
           </Link>
           <ul className="hidden md:flex text-sm lg:text-base gap-12 ml-3 items-center font-serif uppercase">
-            {
-              menuItems.map(item=>(
-                <li>
-                <NavLink to={item.path} className=" hover:text-slate-50 ">
+            {menuItems.map((item) => (
+              <li key={item.path}>
+                <NavLink to={item.path} className={activeClass}>
                   {item.text}
                 </NavLink>
               </li>
-              ))
-            }
-          
-
+            ))}
           </ul>
         </div>
         <div className="ml-auto hidden md:block lg:text-base text-sm ">
-          <ul className="flex gap-3 uppercase">
-            <li>
-              <NavLink to="/login" className=" hover:text-slate-50 text-yellow-200">
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="bg-rose-700 hover:bg-rose-500 px-3 py-2 rounded-2xl text-white"
-                to="signup"
-              >
-                Signup
-              </NavLink>
-            </li>
-          </ul>
+          {Object.keys(user).length ? (
+            <div>
+              {user.name}
+            </div>
+          ) : (
+            <ul className="flex gap-3 uppercase">
+              <li>
+                <NavLink
+                  to="/login"
+                  className=" hover:text-slate-50 text-yellow-200"
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="bg-rose-700 hover:bg-rose-500 px-3 py-2 rounded-2xl text-white"
+                  to="signup"
+                >
+                  Signup
+                </NavLink>
+              </li>
+            </ul>
+          )}
         </div>
         <div className="md:hidden ml-auto">
           <button onClick={() => setIsOpenMenu(!isOpenMenu)}>
@@ -89,16 +98,17 @@ export default function Navigation() {
         }`}
       >
         <ul className="flex flex-col gap-3 ">
-        {
-              menuItems.map(item=>(
-                <li>
-                <NavLink to={item.path} className=" hover:text-slate-50 ">
-                  {item.text}
-                </NavLink>
-              </li>
-              ))
-            }
-
+          {menuItems.map((item) => (
+            <li key={item.path}>
+              <NavLink
+                to={item.path}
+                className={activeClass}
+                onClick={() => setIsOpenMenu(false)}
+              >
+                {item.text}
+              </NavLink>
+            </li>
+          ))}
         </ul>
         <div className="mt-2 flex gap-4 justify-center border-t-2 py-4 border-slate-700 items-center">
           <NavLink to="/login" className="text-xl">
