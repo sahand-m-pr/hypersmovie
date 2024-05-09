@@ -6,7 +6,7 @@ const baseUrl = "https://api.themoviedb.org/3";
 
 export const UserContext = createContext({});
 export default function UserProvider({ children }) {
-  const [user, setUser] = useState({name :'sahand'});
+  const [user, setUser] = useState({});
   const [session, setSession] = useState(() => localStorage.getItem("session"));
   async function getUserData() {
     const userResult = await axios.get(
