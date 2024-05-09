@@ -4,11 +4,16 @@ import Home from "./component/pages/Home";
 import Movies from "./component/pages/Movies";
 import Movie from "./component/Movie";
 import Login from "./component/pages/Login";
+import UserProvider from "./context/User";
 
 
 export const router = createBrowserRouter([
     {
-        element : <App />,
+        element :(
+            <UserProvider >
+                <App />
+            </UserProvider>
+        )  ,
         children :[
             {
                 path :'/',

@@ -14,7 +14,7 @@ export default function Login() {
       <h1>login page</h1>
       <form
         className="flex flex-col text-black gap-8"
-        noValidate
+        
         onSubmit={handleLogin}
       >
         <input

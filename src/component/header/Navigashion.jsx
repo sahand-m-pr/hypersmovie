@@ -21,7 +21,7 @@ const menuItems = [
 ];
 
 export default function Navigation() {
-  const  { user}  = useContext(UserContext);
+  const { user, logOut } = useContext(UserContext);
   function activeClass({ isActive }) {
     return isActive ? "text-yellow-400" : "hover:text-white";
   }
@@ -48,8 +48,16 @@ export default function Navigation() {
         </div>
         <div className="ml-auto hidden md:block lg:text-base text-sm ">
           {Object.keys(user).length ? (
-            <div>
-              {user.name}
+            <div className="flex items-center text-white font-serif text-2xl gap-4">
+              <>
+                {user.name}
+                <button
+                  onClick={logOut}
+                  className="bg-rose-800 text-lg text-yellow-400 rounded p-2"
+                >
+                  log Out
+                </button>
+              </>
             </div>
           ) : (
             <ul className="flex gap-3 uppercase">

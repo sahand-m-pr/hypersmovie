@@ -6,7 +6,5 @@ import { router } from "./router.jsx";
 import UserProvider from "./context/User.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <UserProvider>
-    <RouterProvider router={router} />
-  </UserProvider>
+  <RouterProvider router={router} />
 );
