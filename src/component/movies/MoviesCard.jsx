@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function MoviesCard({movie}) {
+export default function MoviesCard({movie, type='movie'}) {
   return (
-<Link to={`/movies/${movie.id}`}>
+<Link to={`/${type=="movie" ? 'movies' :'tv'}/${movie.id}`}>
 <div className=" bg-gray-300 aspect-[2/3] rounded overflow-hidden   relative">
       <img
       src={`http://image.tmdb.org/t/p/w780/${movie.poster_path}`}

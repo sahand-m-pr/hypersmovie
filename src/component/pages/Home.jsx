@@ -1,49 +1,76 @@
+import { useState } from "react";
 import MovieListSlider from "../main/MovieListSlider";
-// const movies = [
-//   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
-//   "https://m.media-amazon.com/images/M/MV5BZTliNWJhM2YtNDc1MC00YTk1LWE2MGYtZmE4M2Y5ODdlNzQzXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_FMjpg_UX1000_.jpg",
-//   "https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg",
-//   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
-//   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
-//   "https://m.media-amazon.com/images/M/MV5BZTliNWJhM2YtNDc1MC00YTk1LWE2MGYtZmE4M2Y5ODdlNzQzXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_FMjpg_UX1000_.jpg",
-//   "https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg",
-//   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
-//   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
-//   "https://m.media-amazon.com/images/M/MV5BZTliNWJhM2YtNDc1MC00YTk1LWE2MGYtZmE4M2Y5ODdlNzQzXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_FMjpg_UX1000_.jpg",
-//   "https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg",
-//   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
-//   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
-//   "https://m.media-amazon.com/images/M/MV5BZTliNWJhM2YtNDc1MC00YTk1LWE2MGYtZmE4M2Y5ODdlNzQzXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_FMjpg_UX1000_.jpg",
-//   "https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg",
-//   "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC/et00384234-xugedwhwrj-portrait.jpg",
-// ];
+import Movies from "./Movies";
+
 export default function Home() {
-    return (
-   <div className="container max-w-5xl">
-         <div className=" my-8  ">
+  const [movieActiveTap, setMovieActiveTap] = useState("now_playing");
+  const [tvActiveTap, setTvActiveTap] = useState("airing_today");
+  function HandlechangeActiveMovieTab(tab) {
+    setMovieActiveTap(tab);
+  }
+  function ActiveClass(tab) {
+    return tab === movieActiveTap ? "text-green-700 text-xl " : "";
+  }
+  function HandlechangeActiveTvTab(tab) {
+    setTvActiveTap(tab);
+  }
+  function ActiveTVClass(tab) {
+    return tab === tvActiveTap ? "text-green-700 text-xl " : "";
+  }
+  return (
+    <div className="container max-w-5xl">
+      <div className=" my-8  ">
         <div className="md:flex gap-6 items-center">
-          <h2 className="text-slate-300 text-2xl"> what's popular </h2>
-          <ul className="flex flex-col   text-yellow-300 md:flex-row md:gap-6" >
-            <li>streaming </li>
-            <li>onTv </li>
-            <li>ForRent </li>
-            <li>in Theaters</li>
+          <h2 className="text-slate-300 text-2xl"> movies </h2>
+          <ul className="flex flex-col [&>li]:cursor-pointer  text-yellow-300 md:flex-row md:gap-6">
+            <li
+              className={ActiveClass("now_playing")}
+              onClick={() => HandlechangeActiveMovieTab("now_playing")}
+            >
+              Now Playing{" "}
+            </li>
+            <li
+              className={ActiveClass("popular")}
+              onClick={() => HandlechangeActiveMovieTab("popular")}
+            >
+              Popular{" "}
+            </li>
+            <li
+              className={ActiveClass("top_rated")}
+              onClick={() => HandlechangeActiveMovieTab("top_rated")}
+            >
+              Top Rated
+            </li>
+            <li
+              className={ActiveClass("upcoming")}
+              onClick={() => HandlechangeActiveMovieTab("upcoming")}
+            >
+              Upcoming
+            </li>
           </ul>
         </div>
-        {/* <MovieListSlider movies={movies} /> */}
+        <MovieListSlider type="movie" activeTap={movieActiveTap} />
       </div>
       <div className=" my-8 ">
         <div className="md:flex gap-6 items-center">
-          <h2 className="text-slate-300 text-2xl"> free to watch </h2>
-          <ul className="flex flex-col   text-yellow-300 md:flex-row md:gap-6" >
-            <li>Movie </li>
-            <li>Tv </li>
-          
+          <h2 className="text-slate-300 text-2xl"> Tv </h2>
+          <ul className="flex flex-col  [&>li]:cursor-pointer  text-yellow-300 md:flex-row md:gap-6">
+            <li
+              className={ActiveTVClass("airing_today")}
+              onClick={() => HandlechangeActiveTvTab("airing_today")}
+            >
+              Airing Today{" "}
+            </li>
+            <li    className={ActiveTVClass("on_the_air")}
+              onClick={() => HandlechangeActiveTvTab("on_the_air")}>On The Air </li>
+            <li    className={ActiveTVClass("popular")}
+              onClick={() => HandlechangeActiveTvTab("popular")}>Popular </li>
+            <li    className={ActiveTVClass("top_rated")}
+              onClick={() => HandlechangeActiveTvTab("top_rated")}>Top Rated </li>
           </ul>
         </div>
-        {/* <MovieListSlider movies={movies} /> */}
+        <MovieListSlider type="tv" activeTap={tvActiveTap}/>
       </div>
-   </div>
-    );
-  }
-  
+    </div>
+  );
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fench } from "../../services/fench";
 import React from "react";
+import axios from "axios";
 
 export default function SearchBox() {
   const [query, setQuery] = useState("");
@@ -9,7 +10,7 @@ export default function SearchBox() {
   useEffect(() => {
     const timeOut = setTimeout(async () => {
       if (query) {
-        const data = await fench("search/multi", {
+        const data = await axios("https://api.themoviedb.org/3/search/multi?da3cf9f38e32359f25ed2d097c96accf", {
           params: {
             query,
           },
@@ -17,7 +18,7 @@ export default function SearchBox() {
 
         searchResult(data.results);
       } else {
-        searchResult([]);
+        setSearchresult([]);
       }
     }, 500);
     return () => {
@@ -49,7 +50,7 @@ export default function SearchBox() {
           xmlns="http://www.w3.org/2000/svg"
           width="30"
           height="30"
-          fill="white"
+          fillRule="white"
           viewBox="0 0 16 16"
           className="absolute right-4 top-1/2 -translate-y-1/2 hidden md:block"
         >

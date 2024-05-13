@@ -50,7 +50,8 @@ export default function Navigation() {
           {Object.keys(user).length ? (
             <div className="flex items-center text-white font-serif text-2xl gap-4">
               <>
-                {user.name}
+               <h1> {user.name}</h1>
+
                 <button
                   onClick={logOut}
                   className="bg-rose-800 text-lg text-yellow-400 rounded p-2"
@@ -86,12 +87,12 @@ export default function Navigation() {
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
-              fill="currentColor"
+              fillRule="currentColor"
               className="bi bi-list"
               viewBox="0 0 16 16"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
               />
             </svg>

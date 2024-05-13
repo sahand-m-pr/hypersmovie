@@ -5,6 +5,7 @@ import Movies from "./component/pages/Movies";
 import Movie from "./component/Movie";
 import Login from "./component/pages/Login";
 import UserProvider from "./context/User";
+import Profile from "./component/pages/Profile";
 
 
 export const router = createBrowserRouter([
@@ -52,13 +53,10 @@ export const router = createBrowserRouter([
                 element : <Movies />
             },
             {
-                path:'/movies',
-                element : <Movies />
+                path:'/profile',
+                element : <Profile />
             },
-            {
-                path:'/movies',
-                element : <Movies />
-            }
+        
         ]
     }
 ])
