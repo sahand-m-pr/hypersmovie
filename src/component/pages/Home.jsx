@@ -1,6 +1,8 @@
 import { useState } from "react";
 import MovieListSlider from "../main/MovieListSlider";
 import Movies from "./Movies";
+import { Helmet } from "react-helmet";
+import Tittle from "../Tittle";
 
 export default function Home() {
   const [movieActiveTap, setMovieActiveTap] = useState("now_playing");
@@ -19,6 +21,9 @@ export default function Home() {
   }
   return (
     <div className="container max-w-5xl">
+      <Tittle>
+        Home
+      </Tittle>
       <div className=" my-8  ">
         <div className="md:flex gap-6 items-center">
           <h2 className="text-slate-300 text-2xl"> movies </h2>

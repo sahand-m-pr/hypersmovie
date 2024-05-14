@@ -1,6 +1,11 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "../../context/User";
+import Login from "../pages/Login";
+import Modal from '../modal';
+import MoviesCard from "../movies/MoviesCard";
+import FolowUs from "./FolowUs";
+
 const menuItems = [
   {
     path: "/movies",
@@ -21,6 +26,7 @@ const menuItems = [
 ];
 
 export default function Navigation() {
+  const [openModal, setopenModal] = useState(false);
   const { user, logOut } = useContext(UserContext);
   function activeClass({ isActive }) {
     return isActive ? "text-yellow-400" : "hover:text-white";
@@ -63,12 +69,12 @@ export default function Navigation() {
           ) : (
             <ul className="flex gap-3 uppercase">
               <li>
-                <NavLink
-                  to="/login"
+                <button
+                  onClick={() => setopenModal(!openModal)}
                   className=" hover:text-slate-50 text-yellow-200"
                 >
                   Login
-                </NavLink>
+                </button>
               </li>
               <li>
                 <NavLink
@@ -131,6 +137,9 @@ export default function Navigation() {
           </NavLink>
         </div>
       </div>
+      <Modal open={openModal} setOpen={setopenModal}>
+        <Login />
+      </Modal>
     </>
   );
 }
